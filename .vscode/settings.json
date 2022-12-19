@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/2e0d4d6e-3e2d-4167-912f-3df392dbe6cf/AppServices/subscriptions/2e0d4d6e-3e2d-4167-912f-3df392dbe6cf/resourceGroups/foi-rus-group/providers/Microsoft.Web/sites/rus22-lposaric-front",
+    "appService.deploySubpath": "."
+}
