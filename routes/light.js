@@ -1,11 +1,41 @@
 var express = require('express');
 var router = express.Router();
 
-const resp = {
-  status: "Hello from RUS Temp API"
-};
+const sql = require('mssql')
+const dbConfig = require('../config'); 
 
-router.get('/', function(req, res, next) {
+const getAllData = async () => {
+  let pool = await sql.connect(dbConfig);
+  let result = await pool.request()
+    .query('SELECT DeviceId, Luminance, DateTime from Measurement');
+
+  return result;
+}
+
+const getDeviceData = async (id) => {
+  let pool = await sql.connect(dbConfig);
+  let result = await pool.request()
+    .input('deviceId', sql.Int, id)
+    .query('SELECT Luminance, DateTime from Measurement WHERE DeviceId = @deviceId');
+
+  return result;
+}
+
+router.get('/', async (req, res, next) => {
+  const data = await getAllData();
+  const resp = { 
+    result : data.recordsets[0]
+  };
+
+  res.send(resp);
+});
+
+router.get('/:id', async (req, res, next) => {
+  const data = await getDeviceData(req.params.id);
+  const resp = { 
+    result : data.recordsets[0]
+  };
+
   res.send(resp);
 });
 
