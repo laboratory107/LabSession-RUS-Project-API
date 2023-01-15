@@ -33,11 +33,6 @@ const options = {
 };
 
 const specs = swaggerJsdoc(options);
-app.use(
-  "/",
-  swaggerUi.serve,
-  swaggerUi.setup(specs)
-);
 
 require("fs").readdirSync(normalizedPath).forEach((file) => {
   const name = "/" + file.replace(".js", "");
@@ -45,6 +40,13 @@ require("fs").readdirSync(normalizedPath).forEach((file) => {
 
   app.use(name, route);
 });
+
+app.use(
+  "/",
+  swaggerUi.serve,
+  swaggerUi.setup(specs)
+);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
