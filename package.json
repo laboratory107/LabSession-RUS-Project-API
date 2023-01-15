@@ -9,10 +9,14 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "express-swagger-generator": "^1.1.17",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
     "mssql": "^9.0.1",
+    "swagger-autogen": "^2.22.0",
+    "swagger-jsdoc": "^6.2.7",
+    "swagger-ui-express": "^4.6.0",
     "tedious": "^15.1.2"
   }
 }

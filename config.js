@@ -1,12 +1,12 @@
 const dbConfig = {
     authentication: {
       options: {
-        userName: "", // TODO: update
-        password: "" // TODO: update
+        userName: "lposaric", // TODO: update
+        password: "Lovro-69" // TODO: update
       },
       type: "default"
     },
-    server: "+net", // TODO: update
+    server: "rus22lposaric.database.windows.net", // TODO: update
     options: {
       database: "BuildingData", //TODO: update
       encrypt: true

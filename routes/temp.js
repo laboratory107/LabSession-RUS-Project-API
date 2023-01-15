@@ -21,6 +21,14 @@ const getDeviceData = async (id) => {
   return result;
 }
 
+/**
+ * @swagger
+ * /temp:
+ *    get:
+ *      description: Get temperature values for all devices
+ *      responses:
+ *        200
+ */
 router.get('/', async (req, res, next) => {
   const data = await getAllData();
   const resp = { 
@@ -30,6 +38,14 @@ router.get('/', async (req, res, next) => {
   res.send(resp);
 });
 
+/**
+ * @swagger
+ * /temp/:id:
+ *    get:
+ *      description: Get temperature values for all devices
+ *      responses:
+ *        200
+ */
 router.get('/:id', async (req, res, next) => {
   const data = await getDeviceData(req.params.id);
   const resp = { 

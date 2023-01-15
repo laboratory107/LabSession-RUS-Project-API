@@ -21,6 +21,14 @@ const getDeviceData = async (id) => {
   return result;
 }
 
+/**
+ * @swagger
+ * /light:
+ *    get:
+ *      description: Get luminance values for all devices
+ *      responses:
+ *        200
+ */
 router.get('/', async (req, res, next) => {
   const data = await getAllData();
   const resp = { 
@@ -29,6 +37,15 @@ router.get('/', async (req, res, next) => {
 
   res.send(resp);
 });
+
+/**
+ * @swagger
+ * /light/:id:
+ *    get:
+ *      description: Get luminance values for a device
+ *      responses:
+ *        200
+ */
 
 router.get('/:id', async (req, res, next) => {
   const data = await getDeviceData(req.params.id);

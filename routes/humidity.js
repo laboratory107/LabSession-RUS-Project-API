@@ -21,6 +21,15 @@ const getDeviceData = async (id) => {
   return result;
 }
 
+
+/**
+ * @swagger
+ * /humidity:
+ *    get:
+ *      description: Get humidity values for a device
+ *      responses:
+ *        200
+ */
 router.get('/', async (req, res, next) => {
   const data = await getAllData();
   const resp = { 
@@ -30,6 +39,14 @@ router.get('/', async (req, res, next) => {
   res.send(resp);
 });
 
+/**
+ * @swagger
+ * /humidity/:id:
+ *    get:
+ *      description: Get humditiy values for a device
+ *      responses:
+ *        200
+ */
 router.get('/:id', async (req, res, next) => {
   const data = await getDeviceData(req.params.id);
   const resp = { 

@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require("swagger-jsdoc");
+
 var app = express();
 
 // view engine setup
@@ -17,6 +20,24 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 var normalizedPath = require("path").join(__dirname, "routes");
+
+const options = {
+  definition: {
+    openapi: "3.0.1",
+    info: {
+      title: "RUS 22 API",
+      version: "0.9.0",
+    },
+  },
+  apis: ["./routes/*.js"],
+};
+
+const specs = swaggerJsdoc(options);
+app.use(
+  "/",
+  swaggerUi.serve,
+  swaggerUi.setup(specs)
+);
 
 require("fs").readdirSync(normalizedPath).forEach((file) => {
   const name = "/" + file.replace(".js", "");
