@@ -17,7 +17,7 @@ const getDeviceData = async (id) => {
  * @swagger
  * /measumerents:
  *    get:
- *      description: Get all measurements
+ *      description: Get all measurements for a device
  *      responses:
  *        200
  */
